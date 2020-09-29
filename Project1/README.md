@@ -1,5 +1,33 @@
 # cs-210
 
+Q1) add_to_frontier in searchGeneric doesn't evaluate/assign value, and pop() in search only popping the last in list so
+the previous neighbors are being added onto continuously and frontier gets stuck.
+Q2) I can't solve mine (let it ran for 30s and timed out) but the discussion on Piazza indicated that my board is in exclude list and the reason for it
+so it's not a surprise. 
+Q3) Other boards worked okay with timeout added.
+Q4) If h(x)=0, it should be uniform cost and A* turns into BFS
+
+Layout:
+
+Everything should be the same like project description. I don't have any helper class. 
+
+searchGeneric: A*, A*MPP
+searchBFS: BFS, BFSMPP
+driver: all 3 algos (A*, A*MPP, BFSMPP)
+
+Heuristic for A*: Manhattan/.35
+It's pretty simple and I didn't put much thought into it unfortunately. I consulted more here: http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html#S7
+while I was searching for how to design heuristics. I tried the Euclidean one even tho Bloxorz specs don't fit just to see what's it like but it didn't work well.
+I also tried different scaling factors for Manhattan distance. The 0.35 is through trials and doesn't mean anything.
+
+
+Stats:
+For board that has no solution but has expanded some path, my report won't show the number of expansion and just "-1". Stats won't include them.
+Average expension per solution move:
+BFSMPP: 5.208221378663108
+A*: 597.6163356849916
+A*MPP: 2.5728051866679684
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">

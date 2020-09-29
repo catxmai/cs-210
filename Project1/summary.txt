@@ -21,7 +21,8 @@ I also tried different scaling factors for Manhattan distance. The 0.35 is throu
 
 Stats:
 For board that has no solution but has expanded some path, my report won't show the number of expansion and just "-1". Stats won't include them.
-5.208221378663108
-597.6163356849916
-2.5728051866679684
+Average expension per solution move:
+BFSMPP: 5.208221378663108
+A*: 597.6163356849916
+A*MPP: 2.5728051866679684
 
