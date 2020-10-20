@@ -101,7 +101,6 @@ class MancalaGame(Game):
 
         # next state
         moves = [i - start for i in range(start, mancala) if board[i] != 0]
-        utility = 0
 
         # check if terminal state, if so add all the remaining stones to the corresponding mancala
         maxs = self.sum_stones(board, self.MAX)
@@ -115,6 +114,7 @@ class MancalaGame(Game):
             for i in range(self.MAX_START, self.MAX_MANCALA):
                 board[i] = 0
 
+        utility = self.utility_helper(board, to_move)
         new_state = Struct(to_move=to_move, utility=utility, board=board, moves=moves)
         return new_state
 
