@@ -33,10 +33,11 @@ def test4():
     return result
 
 if __name__ == '__main__':
-    NUM_MATCH = 1000
+    NUM_MATCH = 300
     win_count = 0
     delta = 0
     for i in range(0, NUM_MATCH):
+        print(i)
         result = test3()
         if result["MAX"]>result["MIN"]:
             win_count+=1
