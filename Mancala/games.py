@@ -159,7 +159,7 @@ def alpha_beta_value(game, state, alpha, beta, cutoff_test, eval_fn, depth=0):
                 beta=score
         return beta
 
-def alphabeta_search(state, game, d=7, cutoff_test=None, eval_fn=None):
+def alphabeta_search(state, game, d=4, cutoff_test=None, eval_fn=None):
     """Search game to determine best action; use alpha-beta pruning.
     This version cuts off search and uses an evaluation function."""
 
@@ -185,7 +185,7 @@ def alphabeta_search(state, game, d=7, cutoff_test=None, eval_fn=None):
 
 
 
-def alphabeta_search2(state, game, d=7, cutoff_test=None, eval_fn=None):
+def alphabeta_search2(state, game, d=4, cutoff_test=None, eval_fn=None):
     cutoff_test = (cutoff_test or
                    (lambda state,depth: depth>d or game.terminal_test(state)))
     eval_fn = eval_fn or (lambda game, state: game.utility(state, player))

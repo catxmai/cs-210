@@ -27,9 +27,13 @@ class MancalaGame(Game):
         return state.moves
 
     def utility(self, state, player):
+        """
+        :return: the utitlity, which is the difference between the player's mancala and their opponent
+        """
         if not self.terminal_test(state):
             return 0
         return self.utility_helper(state.board, player)
+
 
     def utility_helper(self, board, player):
         max_stones = board[self.MAX_MANCALA]
@@ -41,6 +45,9 @@ class MancalaGame(Game):
             return min_stones - max_stones
 
     def to_move_utils(self, to_move):
+        """
+        helper fn to determine start and mancala given who to_move is
+        """
         if to_move == self.MAX:
             start = self.MAX_START
             mancala = self.MAX_MANCALA
@@ -51,12 +58,18 @@ class MancalaGame(Game):
         return start, mancala
 
     def make_move(self, move, state):
+        """
+        :param move: move 0-5 inclusive
+        :param state: current state
+        :return: new state after move is made
+        """
         if move not in state.moves:
             return
 
         board = state.board.copy()
         to_move = state.to_move
         start, mancala = self.to_move_utils(to_move)
+        print(to_move)
 
         # 0-5 choice
         move_to = start + move
@@ -81,6 +94,7 @@ class MancalaGame(Game):
         curr_pos -= 1
         # if board[curr_pos]==1 and not mancalas, meaning we just landed on empty slot
         if curr_pos != self.MIN_MANCALA and curr_pos != self.MAX_MANCALA:
+            # determine which side this position is on based on game consts
             pos_side = self.MAX if math.ceil(curr_pos / self.SLOT_PER_PLAYER) == 1 else self.MIN
             opposite_index = self.SLOT_PER_PLAYER * 2 - curr_pos
             if board[curr_pos] == 1 and pos_side == to_move and board[opposite_index] != 0:
