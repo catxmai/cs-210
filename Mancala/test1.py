@@ -33,7 +33,7 @@ def test4():
     return result
 
 if __name__ == '__main__':
-    NUM_MATCH = 300
+    NUM_MATCH = 100
     win_count = 0
     delta = 0
     for i in range(0, NUM_MATCH):

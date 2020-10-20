@@ -6,6 +6,7 @@ from games import Game
 class MancalaGame(Game):
     MAX = "MAX"
     MIN = "MIN"
+    VAL = {"MAX": 1, "MIN": -1}
     OPPOSITE = {"MAX": "MIN", "MIN": "MAX"}
     SLOT_PER_PLAYER = 6
     NUM_STONE = 4
@@ -151,9 +152,10 @@ def eval(game, state):
     board = state.board
     manc = board[mancala]
     stone = game.sum_stones(board,to_move)
-    CONST_MANCALA = .9
+    CONST_MANCALA = .85
     CONST_STONE = 1-CONST_MANCALA
-    return (CONST_MANCALA*manc) + (CONST_STONE*stone)
+
+    return ((CONST_MANCALA*manc) + (CONST_STONE*stone)) * game.VAL[to_move]
 
 #
 # test = Mancala()
