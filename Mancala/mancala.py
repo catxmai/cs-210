@@ -62,7 +62,7 @@ class MancalaGame(Game):
         move_to = start + move
         stone_count = board[move_to]
 
-        # picked up the stone and go conterclockwise
+        # picked up the stone and go counterclockwise
         board[move_to] = 0
         cycle = self.NUM_SLOT
         curr_pos = move_to + 1
@@ -89,7 +89,7 @@ class MancalaGame(Game):
                 board[curr_pos] = 0
                 board[opposite_index] = 0
 
-        # if land on mancala.py, go again
+        # if land on your mancala, go again
         if (to_move == self.MAX and curr_pos == self.MAX_MANCALA) | \
                 (to_move == self.MIN and curr_pos == self.MIN_MANCALA):
             to_move = to_move
@@ -103,7 +103,7 @@ class MancalaGame(Game):
         moves = [i - start for i in range(start, mancala) if board[i] != 0]
         utility = 0
 
-        # check if terminal state, if so add all the stones together to the remaining mancala
+        # check if terminal state, if so add all the remaining stones to the corresponding mancala
         maxs = self.sum_stones(board, self.MAX)
         mins = self.sum_stones(board, self.MIN)
         if maxs == 0 and mins != 0:
