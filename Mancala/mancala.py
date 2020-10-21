@@ -65,11 +65,11 @@ class MancalaGame(Game):
         """
         if move not in state.moves:
             return
+        # print(state.to_move)
 
         board = state.board.copy()
         to_move = state.to_move
         start, mancala = self.to_move_utils(to_move)
-        print(to_move)
 
         # 0-5 choice
         move_to = start + move
@@ -81,7 +81,7 @@ class MancalaGame(Game):
         curr_pos = move_to + 1
 
         while stone_count > 0:
-
+            # print(curr_pos)
             if (to_move == self.MAX and curr_pos == self.MIN_MANCALA) | \
                     (to_move == self.MIN and curr_pos == self.MAX_MANCALA):
                 curr_pos += 1
@@ -92,14 +92,22 @@ class MancalaGame(Game):
             curr_pos += 1
 
         curr_pos -= 1
+
         # if board[curr_pos]==1 and not mancalas, meaning we just landed on empty slot
-        if curr_pos != self.MIN_MANCALA and curr_pos != self.MAX_MANCALA:
+        if curr_pos != self.MIN_MANCALA and curr_pos != self.MAX_MANCALA and board[curr_pos] == 1:
             # determine which side this position is on based on game consts
             pos_side = self.MAX if math.ceil(curr_pos / self.SLOT_PER_PLAYER) == 1 else self.MIN
             opposite_index = self.SLOT_PER_PLAYER * 2 - curr_pos
-            if board[curr_pos] == 1 and pos_side == to_move and board[opposite_index] != 0:
+            if pos_side == to_move and board[opposite_index] != 0:
                 captures = board[curr_pos] + board[opposite_index]
+                # print(f" cap {captures}")
+                # print(f" curr pos {curr_pos}")
+                # print(f" board cur {board[curr_pos]}")
+                # print(f" opp i {opposite_index}")
+                # print(f" curr manc {board[mancala]}")
+                # print(f" board opp {board[opposite_index]}")
                 board[mancala] += captures
+                # print(" board",board[mancala])
                 board[curr_pos] = 0
                 board[opposite_index] = 0
 

@@ -7,7 +7,7 @@ def player_fn(game, state):
 
 def test1():
     game = mancala.MancalaGame()
-    named_players = (("MAX", games.query_player_py_exp), ("MIN", games.random_player))
+    named_players = (("MAX", games.query_player_py_exp), ("MIN", games.query_player_py_exp))
     result = games.play_game2(game, named_players)
     print(result)
     return result
@@ -21,20 +21,20 @@ def test2():
 
 def test3():
     game = mancala.MancalaGame()
-    named_players = (("MAX", player_fn), ("MIN", games.random_player))
+    named_players = (("MAX", player_fn), ("MIN", games.query_player_py_exp))
     result = games.play_game2(game, named_players)
     # print(result)
     return result
 
 def test4():
     game = mancala.MancalaGame()
-    named_players = (("MAX", games.alphabeta_full_player), ("MIN", games.alphabeta_player))
+    named_players = (("MAX", player_fn), ("MIN", player_fn))
     result = games.play_game2(game, named_players)
     print(result)
     return result
 
 if __name__ == '__main__':
-    NUM_MATCH = 100
+    NUM_MATCH = 10
     win_count = 0
     delta = 0
     for i in range(0, NUM_MATCH):

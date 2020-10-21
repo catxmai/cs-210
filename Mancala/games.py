@@ -305,9 +305,9 @@ def play_game2(game, named_players):
                 move = player_function(game, state)
                 state = game.make_move(move, state)
                 if game.terminal_test(state):
-                    # print
-                    # print("Game over - last move was by player %s" % (player_name,))
-                    # game.display(state)
+                    print
+                    print("Game over - last move was by player %s" % (player_name,))
+                    game.display(state)
                     game_over = True
                     break
             if game_over:
