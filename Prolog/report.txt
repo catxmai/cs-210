@@ -1,0 +1,23 @@
+6. First 3 sentences:
+X = [student, passed, student] ;
+X = [student, passed, student, with, student] ;
+X = [student, passed, student, with, student, with, student] ;
+
+7. First 3 noun phrases:
+X = [student] ;
+X = [student, with, student] ;
+X = [student, with, student, with, student] ;
+I suppose it's appending the prep phrase "with student" to the end continuously.
+
+Tree form of "the cat hated the mouse":
+Tree = sentence(noun_phrase(determiner(the), noun(cat)), verb_phrase(verb(hate), noun_phrase(determiner(the), noun(mouse)))).
+
+12. 2 different parse for "the student passed the course with the comp":
+24 ?- sentence(Tree, [the,student,passed,the,course,with,the,computer], []).
+Tree = sentence(noun_phrase(determiner(the), noun(mouse), prepo_phrase([])), verb_phrase(verb(pass), noun_phrase(determiner(the), noun(course), prepo_phrase([])), prepo_phrase(prepo(with), noun_phrase(determiner(the), noun(computer), prepo_phrase([]))))) ;
+Tree = sentence(noun_phrase(determiner(the), noun(mouse), prepo_phrase([])), verb_phrase(verb(pass), noun_phrase(determiner(the), noun(course), prepo_phrase(prepo(with), noun_phrase(determiner(the), noun(computer), prepo_phrase([])))), prepo_phrase([]))) ;
+false.
+
+There're 2 possible different parses because: 
+ 1. The verb phrase is passed + the course + with the computer
+ 2. The verb phrase is passed + (the course with the computer)
